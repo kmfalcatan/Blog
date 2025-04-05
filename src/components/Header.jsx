@@ -1,12 +1,13 @@
 import "../assets/css/header.css";
 import { useState } from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Styled-components for the theme toggle button
 const ToggleContainer = styled.div`
   width: 2.5rem;
   height: 1rem;
+  margin-right: 0.5rem;
   border-radius: 50px;
   background: ${({ darkMode }) => (darkMode ? "#FAFAFA" : "#1E1E2F")};
   display: flex;
@@ -64,22 +65,12 @@ function Header({ darkMode, setDarkMode }) {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
-      setMenuOpen(false); // Optional: auto-close menu when navigating
+      setMenuOpen(false); // Auto-close menu after click
     }
   };
 
   return (
     <div className={`headerContainer ${darkMode ? "dark" : "light"}`}>
-      {/* Custom Dark Mode Toggle Button */}
-        <ToggleContainer onClick={toggleDarkMode} darkMode={darkMode}>
-          <ToggleCircle
-            layout
-            transition={{ type: "spring", stiffness: 700, damping: 30 }}
-            darkMode={darkMode}
-          >
-            <ToggleIcon darkMode={darkMode} />
-          </ToggleCircle>
-        </ToggleContainer>
       <div 
         className={`menubarContainer ${menuOpen ? "change" : ""}`} 
         onClick={toggleMenu}
@@ -89,14 +80,82 @@ function Header({ darkMode, setDarkMode }) {
         <div className={`line ${darkMode ? "dark" : "light"}`}></div>
       </div>
 
-      {/* Slide-down menu */}
-      <div className={`subMenubarContainer ${menuOpen ? "fadeIn" : "fadeOut"} ${darkMode ? "dark" : "light"}`}>
-        <button onClick={() => scrollToSection("home")}  className={`button2 ${darkMode ? "dark" : "light"}`}>Home</button>
-        <button onClick={() => scrollToSection("about")}  className={`button2 ${darkMode ? "dark" : "light"}`}>About</button>
-        <button onClick={() => scrollToSection("skill")}  className={`button2 ${darkMode ? "dark" : "light"}`}>Skills</button>
-        <button onClick={() => scrollToSection("project")}  className={`button2 ${darkMode ? "dark" : "light"}`}>Project</button>
-        <button onClick={() => scrollToSection("contact")}  className={`button2 ${darkMode ? "dark" : "light"}`}>Contact</button>
-      </div>
+      <AnimatePresence>
+  {menuOpen && (
+    <motion.div
+      key="menu"
+      initial={{
+        clipPath: "circle(0% at 0% 0%)",
+        opacity: 0,
+      }}
+      animate={{
+        clipPath: "circle(150% at 0% 0%)", // expands diagonally
+        opacity: 1,
+      }}
+      exit={{
+        clipPath: "circle(0% at 0% 0%)",
+        opacity: 0,
+      }}
+      transition={{
+        duration: 0.6,
+        ease: "easeInOut",
+      }}
+      className={`subMenubarContainer ${darkMode ? "dark" : "light"}`}
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        overflow: "hidden",
+      }}
+    >
+      {/* Button container with delayed reveal */}
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              delayChildren: 0.6, // wait for container to expand
+              staggerChildren: 0.1,
+            },
+          },
+        }}
+        style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+      >
+        {["home", "about", "skill", "project", "contact"].map((id) => (
+          <motion.button
+            key={id}
+            onClick={() => scrollToSection(id)}
+            className={`button2 ${darkMode ? "dark" : "light"}`}
+            variants={{
+              hidden: { opacity: 0, y: 10 },
+              visible: { opacity: 1, y: 0 },
+            }}
+          >
+            {id.charAt(0).toUpperCase() + id.slice(1)}
+          </motion.button>
+        ))}
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
+
+
+      {/* Dark mode toggle */}
+      <ToggleContainer onClick={toggleDarkMode} darkMode={darkMode}>
+        <ToggleCircle
+          layout
+          transition={{ type: "spring", stiffness: 700, damping: 30 }}
+          darkMode={darkMode}
+        >
+          <ToggleIcon darkMode={darkMode} />
+        </ToggleCircle>
+      </ToggleContainer>
     </div>
   );
 }
