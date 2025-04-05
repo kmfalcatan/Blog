@@ -5,9 +5,9 @@
   top: 0;
   width: 100%;
   display: flex;
+  z-index: 1;
   justify-content: space-between;
   align-items: center;
-  padding: 0 0.5rem;
   transition: all 0.3s ease-in-out;
 }
 
@@ -65,14 +65,14 @@ body{
 }
 
 .subMenubarContainer {
-  display: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
   opacity: 0;
   transform: translateY(-10px);
   position: absolute;
   top: 0;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
+  padding-top: 3.5rem;
 }
 
 .subMenubarContainer.light{
