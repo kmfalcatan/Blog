@@ -1,0 +1,120 @@
+.headerContainer{
+  outline: red dashed 1px;
+  height: 3.5rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+body{
+  
+  transition: all 0.3s ease-in-out;
+}
+
+.headerContainer.light{
+  background-color: #fafafa;
+}
+
+.headerContainer.dark{
+  background-color: #1E1E2F;
+}
+
+.menubarContainer{
+  padding-top: 2px;
+  width: 3.125rem;
+  height: 3rem;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.line{
+  border: solid 0.125rem;
+  width: 1.563rem;
+  margin-bottom: 0.313rem;
+  margin-top: 0.5rem;
+  margin-left: 0.563rem;
+}
+
+.line.light{
+  border-color: #1E1E2F;
+}
+
+.line.dark{
+  border-color: #fafafa;
+}
+
+.hidden{
+  display: none;
+}
+
+.change .line:nth-child(1) {
+  transform: rotate(-45deg) translate(-9px, 0.625rem);
+}
+
+.change .line:nth-child(2) {
+  opacity: 0;
+}
+
+.change .line:nth-child(3) {
+  transform: rotate(45deg) translate(-0.438rem, -0.5rem);
+}
+
+.subMenubarContainer {
+  display: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(-10px);
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+.subMenubarContainer.light{
+  background-color: #F0F0F0;
+  color: #555555;
+}
+
+.subMenubarContainer.dark{
+  background-color: #2E2E42;
+  color: #CCCCCC;
+}
+
+.subMenubarContainer.fadeIn {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+  flex-direction: column;
+  padding-top: 3.5rem;
+}
+
+.subMenubarContainer.fadeOut {
+  display: none;
+  opacity: 0;
+}
+
+.button2{
+  width: 100%;
+  background-color: transparent;
+  height: 2.5rem;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.button2:hover{
+  border: 1px solid #DADADA;
+}
+
+.button2.light{
+  color: #555555;
+}
+
+.button2.dark{
+  color: #CCCCCC;
+}
