@@ -1,0 +1,115 @@
+.aboutContainer{
+  outline: red dashed 1px;
+  display: grid;
+  grid-template-rows: 25rem 1fr;
+}
+
+.subAboutContainer{
+  outline: red dashed 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pictureBackgroundContainer {
+  height: 12rem;
+  width: 12rem;
+  border-radius: 2rem;
+  margin-top: 3rem;
+  transform: rotate(45deg);
+  background-color: #262636;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden; /* this hides any image overflow */
+}
+
+
+.picture {
+  height: 15.5rem;
+  width: 15.5rem;
+  transform: rotate(-45deg);
+  object-fit: cover; /* this fills the box */
+  border-radius: 2rem; /* matches the parent container */
+  display: block;
+  outline: red dashed 1px;
+}
+
+.aboutMeContainer{
+  outline: red dashed 1px;
+  overflow: auto;
+  font-size: 1.2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto";
+  width: 95%;
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .aboutContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    height: 100vh;
+  }
+
+  .aboutMeContainer{
+    height: 100%;
+    overflow: auto;
+  }
+
+  .subAboutContainer{
+    overflow: auto;
+    padding-top: 3rem;
+  }
+
+  .pictureBackgroundContainer{
+    height: 14rem;
+    width: 14rem;
+    margin: 0;
+  }
+  
+  .picture{
+    height: 18.6rem;
+    width: 18.6rem;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 730px) {
+  .aboutMe{
+    margin-top: 6rem;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .aboutContainer{
+    display: grid;
+    grid-template-columns: 35rem 1fr;
+    grid-template-rows: 1fr;
+    height: 100vh;
+  }
+
+  .aboutMeContainer{
+    height: 100%;
+    overflow: auto;
+    font-size: 1.5rem;
+  }
+
+  .subAboutContainer{
+    padding-top: 3rem;
+  }
+
+  .pictureBackgroundContainer{
+    height: 18rem;
+    width: 18rem;
+    margin: 0;
+  }
+  
+  .picture{
+    height: 23.8rem;
+    width: 23.8rem;
+  }
+}

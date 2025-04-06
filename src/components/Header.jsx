@@ -81,73 +81,72 @@ function Header({ darkMode, setDarkMode }) {
       </div>
 
       <AnimatePresence>
-  {menuOpen && (
-    <motion.div
-      key="menu"
-      initial={{
-        clipPath: "circle(0% at 0% 0%)",
-        opacity: 0,
-      }}
-      animate={{
-        clipPath: "circle(150% at 0% 0%)", // expands diagonally
-        opacity: 1,
-      }}
-      exit={{
-        clipPath: "circle(0% at 0% 0%)",
-        opacity: 0,
-      }}
-      transition={{
-        duration: 0.6,
-        ease: "easeInOut",
-      }}
-      className={`subMenubarContainer ${darkMode ? "dark" : "light"}`}
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100vw",
-        height: "100vh",
-        overflow: "hidden",
-      }}
-    >
-      {/* Button container with delayed reveal */}
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        exit="hidden"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: {
-              delayChildren: 0.6, // wait for container to expand
-              staggerChildren: 0.1,
-            },
-          },
-        }}
-        style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
-      >
-        {["home", "about", "skill", "project", "contact"].map((id) => (
-          <motion.button
-            key={id}
-            onClick={() => scrollToSection(id)}
-            className={`button2 ${darkMode ? "dark" : "light"}`}
-            variants={{
-              hidden: { opacity: 0, y: 10 },
-              visible: { opacity: 1, y: 0 },
+        {menuOpen && (
+          <motion.div
+            key="menu"
+            initial={{
+              clipPath: "circle(0% at 0% 0%)",
+              opacity: 0,
+            }}
+            animate={{
+              clipPath: "circle(150% at 0% 0%)", // expands diagonally
+              opacity: 1,
+            }}
+            exit={{
+              clipPath: "circle(0% at 0% 0%)",
+              opacity: 0,
+            }}
+            transition={{
+              duration: 0.6,
+              ease: "easeInOut",
+            }}
+            className={`subMenubarContainer ${darkMode ? "dark" : "light"}`}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100vw",
+              height: "100vh",
+              overflow: "hidden",
             }}
           >
-            {id.charAt(0).toUpperCase() + id.slice(1)}
-          </motion.button>
-        ))}
-      </motion.div>
-    </motion.div>
-  )}
-</AnimatePresence>
-
+            {/* Button container with delayed reveal */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    delayChildren: 0.6, // wait for container to expand
+                    staggerChildren: 0.1,
+                  },
+                },
+              }}
+              style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+            >
+              {["Home", "About", "Blog", "Gallery", "Contact"].map((id) => (
+                <motion.button
+                  key={id}
+                  onClick={() => scrollToSection(id)}
+                  className={`button2 ${darkMode ? "dark" : "light"}`}
+                  variants={{
+                    hidden: { opacity: 0, y: 10 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
+                >
+                  {id.charAt(0).toUpperCase() + id.slice(1)}
+                </motion.button>
+              ))}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Dark mode toggle */}
-      <ToggleContainer onClick={toggleDarkMode} darkMode={darkMode}>
+      <ToggleContainer className="mode" onClick={toggleDarkMode} darkMode={darkMode}>
         <ToggleCircle
           layout
           transition={{ type: "spring", stiffness: 700, damping: 30 }}
@@ -156,6 +155,14 @@ function Header({ darkMode, setDarkMode }) {
           <ToggleIcon darkMode={darkMode} />
         </ToggleCircle>
       </ToggleContainer>
+
+      <div className="subHeaderContainer">
+        <button onClick={() => scrollToSection("home")} className={`button ${darkMode ? "dark" : "light"}`}>Home</button>
+        <button onClick={() => scrollToSection("about")} className={`button ${darkMode ? "dark" : "light"}`}>About</button>
+        <button onClick={() => scrollToSection("skill")} className={`button ${darkMode ? "dark" : "light"}`}>Skills</button>
+        <button onClick={() => scrollToSection("project")} className={`button ${darkMode ? "dark" : "light"}`}>Project</button>
+        <button onClick={() => scrollToSection("contact")} className={`button ${darkMode ? "dark" : "light"}`}>Contact</button>
+      </div>
     </div>
   );
 }
