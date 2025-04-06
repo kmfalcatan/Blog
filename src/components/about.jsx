@@ -18,15 +18,15 @@ function About({ darkMode }) {
     
   return(
     <div className="aboutContainer">
-      <div className="subAboutContainer">
-        <div className="pictureBackgroundContainer">
+      <div data-aos="fade" className="subAboutContainer">
+        <div className={`pictureBackgroundContainer ${darkMode ? "dark" : "light"}`}>
           <img className="picture" src={Km} alt="" />
         </div>
       </div>
 
-      <div className="subAboutContainer">
+      <div data-aos="fade" data-aos-delay="300" className="subAboutContainer">
         <div className="aboutMeContainer">
-          <p className="aboutMe">Hi, I’m Khriz Marr L. Falcatan, a 4th-year student at Western Mindanao State University, currently pursuing a Bachelor of Science in Information Technology. I have a strong passion for front-end development, where I focus on creating visually appealing and user-friendly web interfaces. My interests lie in crafting responsive and interactive designs using modern technologies like HTML, CSS, JavaScript, and frameworks such as React. I enjoy solving UI/UX challenges and ensuring that web applications provide a seamless experience across different devices and browsers. As I continue to develop my skills, I am eager to learn more about emerging trends in front-end development and how I can apply them to real-world projects.</p>
+          <p className={`aboutMe ${darkMode ? "dark" : "light"}`}>Hi, I’m Khriz Marr L. Falcatan, a 4th-year student at Western Mindanao State University, currently pursuing a Bachelor of Science in Information Technology. I have a strong passion for front-end development, where I focus on creating visually appealing and user-friendly web interfaces. My interests lie in crafting responsive and interactive designs using modern technologies like HTML, CSS, JavaScript, and frameworks such as React. I enjoy solving UI/UX challenges and ensuring that web applications provide a seamless experience across different devices and browsers. As I continue to develop my skills, I am eager to learn more about emerging trends in front-end development and how I can apply them to real-world projects.</p>
         </div>
       </div>
     </div>

@@ -1,11 +1,9 @@
 .aboutContainer{
-  outline: red dashed 1px;
   display: grid;
   grid-template-rows: 25rem 1fr;
 }
 
 .subAboutContainer{
-  outline: red dashed 1px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,12 +15,19 @@
   border-radius: 2rem;
   margin-top: 3rem;
   transform: rotate(45deg);
-  background-color: #262636;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
   overflow: hidden; /* this hides any image overflow */
+}
+
+.pictureBackgroundContainer.dark{
+  background-color: #262636;
+}
+
+.pictureBackgroundContainer.light{
+  background-color: #F0F0F0;
 }
 
 
@@ -33,11 +38,9 @@
   object-fit: cover; /* this fills the box */
   border-radius: 2rem; /* matches the parent container */
   display: block;
-  outline: red dashed 1px;
 }
 
 .aboutMeContainer{
-  outline: red dashed 1px;
   overflow: auto;
   font-size: 1.2rem;
   text-align: center;
@@ -46,6 +49,14 @@
   align-items: center;
   font-family: "Roboto";
   width: 95%;
+}
+
+.aboutMe.light{
+  color: #2E2E2E;
+}
+
+.aboutMe.dark{
+  color: #EAEAEA;
 }
 
 @media only screen and (min-width: 601px) and (max-width: 1024px) {

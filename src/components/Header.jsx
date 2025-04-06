@@ -35,8 +35,7 @@ const ToggleCircle = styled(motion.div)`
 
 const ToggleIcon = ({ darkMode }) => {
   return darkMode ? (
-    <div style={{ display: "flex", gap: "2px" }}>
-    </div>
+    <div style={{ display: "flex", gap: "2px" }}></div>
   ) : (
     <div style={{ position: "relative" }}>
       <div
@@ -58,21 +57,23 @@ const ToggleIcon = ({ darkMode }) => {
 function Header({ darkMode, setDarkMode }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => setMenuOpen(prev => !prev);
-  const toggleDarkMode = () => setDarkMode(prev => !prev);
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const toggleDarkMode = () => setDarkMode((prev) => !prev);
 
   const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-      setMenuOpen(false); // Auto-close menu after click
-    }
+    setMenuOpen(false); // close the menu first
+    setTimeout(() => {
+      const section = document.getElementById(id.toLowerCase());
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 600); // wait for animation to finish
   };
 
   return (
     <div className={`headerContainer ${darkMode ? "dark" : "light"}`}>
-      <div 
-        className={`menubarContainer ${menuOpen ? "change" : ""}`} 
+      <div
+        className={`menubarContainer ${menuOpen ? "change" : ""}`}
         onClick={toggleMenu}
       >
         <div className={`line ${darkMode ? "dark" : "light"}`}></div>
@@ -127,7 +128,7 @@ function Header({ darkMode, setDarkMode }) {
               }}
               style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
             >
-              {["Home", "About", "Blog", "Gallery", "Contact"].map((id) => (
+              {["home", "about", "skill", "project", "contact"].map((id) => (
                 <motion.button
                   key={id}
                   onClick={() => scrollToSection(id)}
@@ -146,7 +147,11 @@ function Header({ darkMode, setDarkMode }) {
       </AnimatePresence>
 
       {/* Dark mode toggle */}
-      <ToggleContainer className="mode" onClick={toggleDarkMode} darkMode={darkMode}>
+      <ToggleContainer
+        className="mode"
+        onClick={toggleDarkMode}
+        darkMode={darkMode}
+      >
         <ToggleCircle
           layout
           transition={{ type: "spring", stiffness: 700, damping: 30 }}
@@ -157,11 +162,36 @@ function Header({ darkMode, setDarkMode }) {
       </ToggleContainer>
 
       <div className="subHeaderContainer">
-        <button onClick={() => scrollToSection("home")} className={`button ${darkMode ? "dark" : "light"}`}>Home</button>
-        <button onClick={() => scrollToSection("about")} className={`button ${darkMode ? "dark" : "light"}`}>About</button>
-        <button onClick={() => scrollToSection("skill")} className={`button ${darkMode ? "dark" : "light"}`}>Skills</button>
-        <button onClick={() => scrollToSection("project")} className={`button ${darkMode ? "dark" : "light"}`}>Project</button>
-        <button onClick={() => scrollToSection("contact")} className={`button ${darkMode ? "dark" : "light"}`}>Contact</button>
+        <button
+          onClick={() => scrollToSection("home")}
+          className={`button ${darkMode ? "dark" : "light"}`}
+        >
+          Home
+        </button>
+        <button
+          onClick={() => scrollToSection("about")}
+          className={`button ${darkMode ? "dark" : "light"}`}
+        >
+          About
+        </button>
+        <button
+          onClick={() => scrollToSection("skill")}
+          className={`button ${darkMode ? "dark" : "light"}`}
+        >
+          Blog
+        </button>
+        <button
+          onClick={() => scrollToSection("project")}
+          className={`button ${darkMode ? "dark" : "light"}`}
+        >
+          Gallery
+        </button>
+        <button
+          onClick={() => scrollToSection("contact")}
+          className={`button ${darkMode ? "dark" : "light"}`}
+        >
+          Contact
+        </button>
       </div>
     </div>
   );
