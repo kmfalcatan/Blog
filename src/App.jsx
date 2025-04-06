@@ -2,6 +2,7 @@ import './App.css'
 import Header from "./components/Header"
 import Hero from "./components/hero"
 import { useState, useEffect } from "react";
+import About from "./components/about"
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkMode") === "true");
@@ -14,7 +15,14 @@ function App() {
   return (
     <div className={darkMode ? "app dark" : "app light"}>
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-      <Hero darkMode={darkMode} />
+    
+      <div id='home'>
+        <Hero darkMode={darkMode} />
+      </div>
+
+      <div id='about'>
+        <About darkMode={darkMode} />
+      </div>
     </div>
   );
 }
