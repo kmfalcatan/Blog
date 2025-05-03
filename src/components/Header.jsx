@@ -128,7 +128,7 @@ function Header({ darkMode, setDarkMode }) {
               }}
               style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
             >
-              {["home", "about", "skill", "project", "contact"].map((id) => (
+              {["Home", "About", "Blog", "Gallery", "Contact"].map((id) => (
                 <motion.button
                   key={id}
                   onClick={() => scrollToSection(id)}
@@ -175,13 +175,13 @@ function Header({ darkMode, setDarkMode }) {
           About
         </button>
         <button
-          onClick={() => scrollToSection("skill")}
+          onClick={() => scrollToSection("blog")}
           className={`button ${darkMode ? "dark" : "light"}`}
         >
           Blog
         </button>
         <button
-          onClick={() => scrollToSection("project")}
+          onClick={() => scrollToSection("gallery")}
           className={`button ${darkMode ? "dark" : "light"}`}
         >
           Gallery
