@@ -1,0 +1,152 @@
+.blogContainer{
+  outline: red dashed 1px;
+  height: 100vh;
+}
+
+.subBlogContainer{
+  outline: red dashed 1px;
+  padding-top: 3rem;
+}
+
+.titleContainer{
+  outline: red dashed 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-family: 'roboto';
+  font-weight: bold;
+}
+
+.titleContainer.dark{
+  color: #EAEAEA;
+}
+
+.titleContainer.light{
+  color: #2E2E2E;
+}
+
+.subTitleContainer{
+  outline: red dashed 1px;
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+  text-align: center;
+  font-family: "roboto";
+  margin-top: 0.5rem;
+}
+
+.subTitleContainer.dark{
+  color: #EAEAEA;
+}
+
+.subTitleContainer.light{
+  color: #2E2E2E;
+}
+
+.blogPostContainer{
+  outline: red dashed 1px;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.subBlogPostContainer{
+  height: 18.5rem;
+  width: 17rem;
+  border-radius: 1rem;
+  position: relative;
+  transition: all 0.15s;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.158);
+}
+
+.subBlogPostContainer:hover{
+  transform: scale(1.02);
+}
+
+.subBlogPostContainer:active{
+  transform: scale(1);
+}
+
+.subBlogPostContainer.dark{
+  background-color: #262636;
+}
+
+.subBlogPostContainer.light{
+  background-color: #F0F0F0;
+}
+
+.blogPictureContainer{
+  display: flex;
+  justify-content: center;
+  border-radius: 1rem 1rem 0 0;
+  align-items: center;
+}
+
+.blogPicture{
+  height: 9rem;
+  width: 100%;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.blogDescriptionContainer{
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 0 0.2rem;
+  margin-top: 0.5rem;
+  font-family: 'roboto';
+}
+
+.blogDescriptionContainer.dark{
+  color: #EAEAEA;
+}
+
+.blogDescriptionContainer.light{
+  color: #2E2E2E;
+}
+
+.blogTitleContainer{
+  outline: red dashed 1px;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: 'roboto';
+}
+
+.blogTitleContainer.dark{
+  color: #EAEAEA;
+}
+
+.blogTitleContainer.light{
+  color: #2E2E2E;
+}
+
+.blogDateContainer{
+  outline: red dashed 1px;
+  position: absolute;
+  bottom: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.subBlogDateContainer{
+  outline: red dashed 1px;
+  padding-left: 0.2rem;
+  width: 100%;
+  font-family: 'roboto';
+}
+
+.subBlogDateContainer.dark{
+  color: #EAEAEA;
+}
+
+.subBlogDateContainer.light{
+  color: #2E2E2E;
+}
