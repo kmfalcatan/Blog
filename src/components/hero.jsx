@@ -38,12 +38,6 @@ function Hero({ darkMode }) {
           <p className={`journey ${darkMode ? "dark" : "light"}`}>
             An unforgettable journey filled with learning, fun, and new experiences worth sharing.
           </p>
-
-          <div className="readMoreContainer">
-            <button className={`readMoreButton ${darkMode ? "dark" : "light"}`}>
-              Read more <FaArrowRight />
-            </button>
-          </div>
         </div>
       </div>
     </div>

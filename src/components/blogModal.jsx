@@ -50,7 +50,7 @@ function BlogModal({ darkMode }) {
         <img className="blogImage" src={images[0]} alt="Main Blog" />
       </div>
 
-      <div className="dayContainer">
+      <div className="dayContainer" data-aos="fade-up" data-aos-delay="300">
         <div className={`subDayContainer ${darkMode ? "dark" : "light"}`}>
           <p className={`dayText ${darkMode ? "dark" : "light"}`}>{state.day}</p>
           <p className={`agenda ${darkMode ? "dark" : "light"}`}>{state.agenda}</p>
