@@ -6,6 +6,7 @@ import Blog from "./components/blog"
 import BlogModal from "./components/blogModal"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { useState, useEffect } from "react";
+import Contact from "./components/contact"
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkMode") === "true");
@@ -34,6 +35,10 @@ function App() {
 
               <div id='blog'>
                 <Blog darkMode={darkMode} />
+              </div>
+
+              <div id='contact'>
+                <Contact darkMode={darkMode} />
               </div>
             </div>
           }

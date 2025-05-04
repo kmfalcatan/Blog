@@ -1,11 +1,9 @@
 .blogModalPage{
-  outline: red dashed 1px;
   position: relative;
   padding-bottom: 2rem;
 }
 
 .modalHeaderContainer{
-  outline: red dashed 1px;
   height: 3rem;
   display: flex;
   justify-content: left;
@@ -21,7 +19,6 @@
 }
 
 .back{
-  outline: red dashed 1px;
   height: 100%;
   cursor: pointer;
 }

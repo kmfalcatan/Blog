@@ -1,4 +1,5 @@
 import "../assets/css/blog.css";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Day1 from "../assets/img/day1.jpg";
 import Day2 from "../assets/img/day2.jpg";
@@ -58,6 +59,8 @@ import Day6Pic8 from "../assets/img/day6Pic8.jpg";
 import Day7Pic1 from "../assets/img/day7Pic1.jpg";
 import Day7Pic3 from "../assets/img/day7Pic2.jpg";
 import Day7Pic2 from "../assets/img/day7Pic3.jpg";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 function Blog({ darkMode }) {
@@ -116,14 +119,25 @@ function Blog({ darkMode }) {
     }
   ];
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+  }, []);
+
+  useEffect(() => {
+    AOS.refresh(); // this will re-calculate animations
+  }, [darkMode]);
+
   return (
     <div className="blogContainer">
       <div className="subBlogContainer">
-        <div className={`titleContainer ${darkMode ? "dark" : "light"}`}>
+        <div className={`titleContainer ${darkMode ? "dark" : "light"}`} data-aos="fade-up">
           <p>Blog Post</p>
         </div>
 
-        <div className={`subTitleContainer ${darkMode ? "dark" : "light"}`}>
+        <div className={`subTitleContainer ${darkMode ? "dark" : "light"}`} data-aos="fade-up" data-aos-delay="300">
           <p>Our educational tour gave us a deeper understanding of important institutions, history, and technology, making it a truly memorable and insightful experience.</p>
         </div>
 
@@ -133,6 +147,7 @@ function Blog({ darkMode }) {
               key={index}
               className={`subBlogPostContainer ${darkMode ? "dark" : "light"}`}
               onClick={() => navigate("/blogModal", { state: post })}
+              data-aos="fade-up" data-aos-delay="400"
             >
               <div className="blogPictureContainer">
                 <img className="blogPicture" src={post.images[0]} alt={post.day} />
